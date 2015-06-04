@@ -1,5 +1,6 @@
 angular.module('contacts.edit.directive', [
   'ngRoute',
+  'ngMessages',
   'contacts.service',
   'contacts.edit.template'
 ]).config(function($routeProvider){
