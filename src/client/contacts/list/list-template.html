@@ -1,0 +1,9 @@
+<div class="container">
+  <ul>
+    <li ng-repeat="contact in contacts">
+      <pre>{{ contact | json }}</pre>
+    </li>
+  </ul>
+  <p>Total contacts: {{contacts.length}}</p>
+  <a href="#/new" class="btn btn-primary">New Contact</a>
+</div>
