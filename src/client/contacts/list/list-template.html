@@ -1,6 +1,12 @@
 <div class="container">
+  <form>
+    <div class="form-group">
+      <label for="search">Search:&nbsp;</label>
+      <input type="search" ng-model="nameQuery" class="form-control" />
+    </div>
+  </form>
   <ul>
-    <li ng-repeat="contact in contacts">
+    <li ng-repeat="contact in contacts | filter:{name: nameQuery}">
       <b>
         <a href="#/view/{{ contact.id }}">
           {{ contact.name }}
