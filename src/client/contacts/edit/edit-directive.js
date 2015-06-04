@@ -3,14 +3,27 @@ angular.module('contacts.edit.directive', [
   'contacts.service',
   'contacts.edit.template'
 ]).config(function($routeProvider){
-  $routeProvider.when('/new', {
+  var editView = {
     templateUrl: 'contacts/edit',
     controller: ContactsEditController
-  });
+  };
+
+  $routeProvider.when('/new', editView);
+  $routeProvider.when('/edit/:contactId', editView);
 });
 
-function ContactsEditController($scope, $location, Contact){
-  $scope.contact = new Contact();
+function ContactsEditController(
+  $scope, $location,
+  $routeParams, Contact
+){
+  if($routeParams.contactId){
+    $scope.contact = Contact.get({
+      contactId: $routeParams.contactId
+    });
+  } else {
+    $scope.contact = new Contact();
+  }
+
   $scope.save = function(){
     $scope.contact.$save().then(function(){
       $location.url('/list');
