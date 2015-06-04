@@ -1,7 +1,15 @@
 <div class="container">
   <ul>
     <li ng-repeat="contact in contacts">
-      <pre>{{ contact | json }}</pre>
+      <b>
+        <a href="#/view/{{ contact.id }}">
+          {{ contact.name }}
+        </a>
+      </b>&nbsp;
+      <a href="mailto://{{ contact.email }}">
+        {{ contact.email }}
+      </a>
+      <!-- <pre>{{ contact | json }}</pre> -->
     </li>
   </ul>
   <p>Total contacts: {{contacts.length}}</p>

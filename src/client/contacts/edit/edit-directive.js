@@ -9,6 +9,11 @@ angular.module('contacts.edit.directive', [
   });
 });
 
-function ContactsEditController($scope, Contact){
+function ContactsEditController($scope, $location, Contact){
   $scope.contact = new Contact();
+  $scope.save = function(){
+    $scope.contact.$save().then(function(){
+      $location.url('/list');
+    });
+  };
 }
